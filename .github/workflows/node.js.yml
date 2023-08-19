@@ -30,7 +30,7 @@ jobs:
         cache: 'npm'
     # npm install
     - name: Run npm install
-    - run: npm i
+      run: npm i
 
     # Gulp bundle & package solution IMPORTANT:Add Gulp install step if needed npm i -g gulp
     - name: Bundle
