@@ -14,16 +14,54 @@ jobs:
 
     strategy:
       matrix:
+        #Update node-vesrion accordingly
         node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+    # Checkout code
+    - name: Checkout Code
     - uses: actions/checkout@v3
+    # Setup node.js runtime
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    # npm install
+    - name: Run npm install
+    - run: npm i
+
+    # Gulp bundle & package solution IMPORTANT:Add Gulp install step if needed npm i -g gulp
+    - name: Bundle
+      run: |
+        gulp bundle --ship --warnoff
+        gulp package-solution --ship
+    - name: Set pkgName
+      id: get-pkgname
+      run: |
+        echo :: set-output name=pkgname::$(find . -name *.sppkg)
+    - name: Use the output
+      run: |
+        echo 'The output pkgname is ${{ steps.get-pkgname.outputs.pkgname }}'
+
+    # Login to tenant using action-cli-login
+    - name: Office 365 CLI Login
+      uses: pnp/action-cli-login@v2
+      with:
+         ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+         ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+         
+    # Deploy package to tenant using action-cli-deploy
+    - name: Deploy app to Site collection
+      id: cliSPFxDeployment
+      uses: pnp/action-cli-deploy@v2.0.0
+      with: 
+        APP_FILE_PATH: sharepoint/solution/spfx-cli-microsoft365-action.sppkg
+        SCOPE: sitecollection
+        SITE_COLLECTION_URL: https://ygc8n.sharepoint.com/sites/EngineeringOnboardingUAT
+
+    - name: Get the ID
+      run: echo "The id - ${{ steps.cliSPFxDeployment.outputs.APP_ID }}"
+
+    
