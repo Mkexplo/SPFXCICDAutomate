@@ -60,6 +60,8 @@ jobs:
         APP_FILE_PATH: sharepoint/solution/spfx-cli-microsoft365-action.sppkg
         SCOPE: sitecollection
         SITE_COLLECTION_URL: https://ygc8n.sharepoint.com/sites/EngineeringOnboardingUAT
+        OVERWRITE: true
+        
 
     - name: Get the ID
       run: echo "The id - ${{ steps.cliSPFxDeployment.outputs.APP_ID }}"
