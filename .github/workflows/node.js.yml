@@ -64,6 +64,6 @@ jobs:
         
 
     - name: Get the ID
-      run: echo "The id - ${{ steps.cliSPFxDeployment.outputs.APP_ID }}"
+      run: echo 'The id - ${{ steps.cliSPFxDeployment.outputs.APP_ID }}'
 
     
