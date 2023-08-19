@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sp-fx-cicd-client-side-solution",
+    "id": "61b2ba58-20fb-4868-ae26-dd508406d848",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.4"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "SPFxCICD description"
+      },
+      "longDescription": {
+        "default": "SPFxCICD description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "sp-fx-cicd Feature",
+        "description": "The feature that activates elements of the sp-fx-cicd solution.",
+        "id": "eb63bef2-0531-4a26-9427-3f2830f705ed",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/sp-fx-cicd.sppkg"
+  }
+}

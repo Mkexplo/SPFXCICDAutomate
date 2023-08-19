@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "spfxcicd-test-wp-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spfxcicdTestWp/SpfxcicdTestWpWebPart.js",
+          "manifest": "./src/webparts/spfxcicdTestWp/SpfxcicdTestWpWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SpfxcicdTestWpWebPartStrings": "lib/webparts/spfxcicdTestWp/loc/{locale}.js"
+  }
+}
